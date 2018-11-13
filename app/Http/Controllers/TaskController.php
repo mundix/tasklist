@@ -16,7 +16,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return response(Task::all()->jsonSerialize(),Response::HTTP_OK);
+        return response(Task::orderBy('id','DESC')->paginate(5)->jsonSerialize(),Response::HTTP_OK);
+        // return response(Task::orderBy('id','DESC')->get()->jsonSerialize(),Response::HTTP_OK);
     }
 
     /**
